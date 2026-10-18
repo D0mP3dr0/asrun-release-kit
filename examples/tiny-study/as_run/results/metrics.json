@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.8125,
+  "n_samples": 16,
+  "seed": 7,
+  "threshold": 0.4648,
+  "data": "/srv/fakelab/tiny-study/data/samples.csv",
+  "source": "Acme Field Survey",
+  "notes_dir": "team_notes/round1",
+  "nota": "Resultado obtido com semente 7 em 16 amostras"
+}

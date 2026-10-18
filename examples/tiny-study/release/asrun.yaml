@@ -1,0 +1,52 @@
+# Configuration of the example release. Paths are relative to this file.
+project: tiny-study
+
+# The tree exactly as run. asrun reads it and never writes to it.
+sources:
+  lab: ../as_run
+
+# What enters the release, and where. team_notes/ is not listed, so it stays out.
+layout:
+  - {src: "lab:train.py", dst: "train.py", why: "the script that wrote the record"}
+  - {src: "lab:config.yaml", dst: "config.yaml", why: "configuration as run"}
+  - {src: "lab:data/samples.csv", dst: "data/samples.csv", why: "input data"}
+  - {src: "lab:results/*.json", dst: "results/", why: "record quoted in the README"}
+
+# Built by the example run; listed in .gitignore.
+workdir: {original: build/original, repo: build/repo, ledger: build/ledger, translation: build/translation}
+
+paths:
+  roots:
+    - {prefix: "/srv/fakelab/tiny-study", var: DATA_ROOT, env: TINY_STUDY_ROOT}  # asrun: allow
+  internal_names: [team_notes]
+  neutral_folder: internal
+  markers:
+    - {value: "Acme Field Survey", marker: "${SOURCE_NAME}"}
+  rename_identifiers: {team_notes_dir: INTERNAL_NOTES_DIR}
+
+text:
+  min_words: 4
+
+payload:
+  # Keys are translated only when no code reads or writes them; train.py writes every key of
+  # results/metrics.json, so none is translated here. Form: {file: {published_key: key_as_written}}.
+  key_translations: {}
+  readme: README.md
+  readme_claims:
+    - {quote: "accuracy of 0.8125", file: results/metrics.json, path: [accuracy], value: 0.8125}
+    - {quote: "16 samples", file: results/metrics.json, path: [n_samples], value: 16}
+    - {quote: "threshold 0.4648", file: results/metrics.json, path: [threshold], value: 0.4648}
+
+publish:
+  new_files:
+    README.md: publish/README.md
+  declared_changes: {}
+  keep_empty_dirs: []
+
+scan:
+  # Example of project-specific terms: anything that names the inside of the lab. A line that
+  # carries the text "asrun: allow" is skipped by the scan (the lists themselves).
+  forbidden_terms: [reviewer, team_notes, Acme Field Survey, confidential, fakelab]  # asrun: allow
+  max_file_mb: 5
+  allow_emails: []
+  exclude: []

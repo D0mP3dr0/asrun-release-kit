@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "asrun: publish research code as it ran, with code and payload identity checks"
+version: 0.1.0
+date-released: 2026-10-18
+license: MIT
+authors:
+  - family-names: Seelig
+    given-names: Luis Felipe Comodo
+    orcid: "https://orcid.org/0009-0000-6095-3864"
+keywords:
+  - reproducibility
+  - research software
+  - provenance
+  - code publication
+  - abstract syntax tree
+  - open science

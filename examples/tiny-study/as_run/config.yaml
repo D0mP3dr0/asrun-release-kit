@@ -1,0 +1,6 @@
+# configuração do experimento (TRAP: non-English comment; YAML comments are not content)
+data_root: /srv/fakelab/tiny-study/data
+seed: 7
+threshold_range: [0.4, 0.6]
+description: "Threshold classifier over sixteen synthetic samples"
+notes: team_notes/round1
